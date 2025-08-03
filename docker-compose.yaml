@@ -1,0 +1,15 @@
+version: "3.8"
+services:
+  scanner:
+    build: .
+    ports:
+      - "5000:5000"
+    user: "0:0" # root
+    cap_add:
+      - NET_RAW
+      - NET_ADMIN
+    network_mode: "host"
+    volumes:
+      - .:/app
+    environment:
+      - FLASK_ENV=development
